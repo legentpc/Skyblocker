@@ -529,8 +529,6 @@
   "skyblocker.config.foraging.galatea.seaLumieMinCount.@Tooltip": "The minimum number of Sea Lumies that must be present within a block for it to be highlighted.",
   "skyblocker.config.foraging.galatea.solveForestTemplePuzzle": "Solve Forest Temple Puzzle",
   "skyblocker.config.foraging.galatea.solveForestTemplePuzzle.@Tooltip": "Displays the amount of times you need to rotate the terracotta blocks. For positive rotations you right click while for negative rotations you left click.",
-	"skyblocker.config.foraging.galatea.highlightTranquilityMobs": "Highlight Mochibears & Bambuleafs",
-	"skyblocker.config.foraging.galatea.highlightTranquilityMobs.@Tooltip": "Highlights Mochibears and Bambuleafs inside the Tranquility Sanctum.",
 
   "skyblocker.config.foraging.hunting": "Hunting",
 

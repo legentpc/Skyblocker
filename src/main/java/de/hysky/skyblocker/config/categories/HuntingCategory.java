@@ -94,7 +94,7 @@ public class HuntingCategory {
 										})
 								.controller(ColourController.createBuilder().hasAlpha(false).build())
 								.build())
-						.option(Option.createBuilder()
+						.option(Option.<Boolean>createBuilder()
 								.name(Component.translatable("skyblocker.config.hunting.huntingMobs.highlightTranquilityMobs"))
 								.description(Component.translatable("skyblocker.config.hunting.huntingMobs.highlightTranquilityMobs.@Tooltip"))
 								.binding(defaults.hunting.huntingMobs.highlightTranquilityMobs,
@@ -102,11 +102,13 @@ public class HuntingCategory {
 										newValue -> config.hunting.huntingMobs.highlightTranquilityMobs = newValue)
 								.controller(ConfigUtils.createBooleanController())
 								.build())
-						.option(Option.createBuilder()
+						.option(Option.<Color>createBuilder()
 								.name(Component.translatable("skyblocker.config.hunting.huntingMobs.colorPicker.TranquilityMobs"))
 								.binding(defaults.hunting.huntingMobs.tranquilityMobGlowColor,
 										() -> config.hunting.huntingMobs.tranquilityMobGlowColor,
-										newValue -> config.hunting.huntingMobs.tranquilityMobGlowColor = newValue)
+										newValue -> {
+											config.hunting.huntingMobs.tranquilityMobGlowColor = newValue;
+										})
 								.controller(ColourController.createBuilder().hasAlpha(false).build())
 								.build())
 						.build())
