@@ -96,7 +96,8 @@ public sealed interface Area {
 	}
 
 	enum Galatea implements Area {
-		FOREST_TEMPLE("Forest Temple");
+		FOREST_TEMPLE("Forest Temple"),
+		TRANQUILITY_SANCTUM("Tranquility Sanctum");
 
 		private final String displayName;
 

@@ -3,9 +3,11 @@ package de.hysky.skyblocker.skyblock.entity.glow.adder;
 import de.hysky.skyblocker.annotations.Init;
 import de.hysky.skyblocker.config.SkyblockerConfigManager;
 import de.hysky.skyblocker.skyblock.entity.MobGlowAdder;
+import de.hysky.skyblocker.utils.Area;
 import de.hysky.skyblocker.utils.Utils;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.animal.panda.Panda;
 import net.minecraft.world.entity.animal.turtle.Turtle;
 import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.item.DyeColor;
@@ -26,6 +28,7 @@ public class GalateaGlowAdder extends MobGlowAdder {
 			case Shulker shulker when shulker.getColor() == DyeColor.GREEN && SkyblockerConfigManager.get().hunting.huntingMobs.highlightHideonleaf -> SkyblockerConfigManager.get().hunting.huntingMobs.hideonleafGlowColor.getRGB();
 			case Turtle _ when SkyblockerConfigManager.get().hunting.huntingMobs.highlightShellwise -> SkyblockerConfigManager.get().hunting.huntingMobs.shellwiseGlowColor.getRGB();
 			case Axolotl _ when SkyblockerConfigManager.get().hunting.huntingMobs.highlightCoralot -> SkyblockerConfigManager.get().hunting.huntingMobs.coralotGlowColor.getRGB();
+			case Panda _ when Utils.getArea() == Area.Galatea.TRANQUILITY_SANCTUM && SkyblockerConfigManager.get().hunting.huntingMobs.highlightTranquilityMobs -> SkyblockerConfigManager.get().hunting.huntingMobs.tranquilityMobGlowColor.getRGB();
 			default -> NO_GLOW;
 		};
 	}

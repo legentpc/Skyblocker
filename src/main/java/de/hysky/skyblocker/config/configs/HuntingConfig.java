@@ -23,6 +23,8 @@ public class HuntingConfig {
 		public Color shellwiseGlowColor = new Color(DyeColor.ORANGE.getTextColor(), false);
 		public boolean highlightCoralot = true;
 		public Color coralotGlowColor = new Color(DyeColor.BLUE.getTextColor(), false);
+		public boolean highlightTranquilityMobs = true;
+		public Color tranquilityMobGlowColor = new Color(DyeColor.YELLOW.getTextColor(), false);
 	}
 
 	public static class LassoHud {
