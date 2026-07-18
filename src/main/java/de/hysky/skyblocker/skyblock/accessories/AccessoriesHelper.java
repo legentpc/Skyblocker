@@ -6,6 +6,7 @@ import de.hysky.skyblocker.SkyblockerMod;
 import de.hysky.skyblocker.annotations.Init;
 import de.hysky.skyblocker.compatibility.CatharsisCompatibility;
 import de.hysky.skyblocker.skyblock.item.tooltip.info.TooltipInfoType;
+import de.hysky.skyblocker.utils.container.ContainerSolverManager;
 import de.hysky.skyblocker.utils.ItemUtils;
 import de.hysky.skyblocker.utils.Utils;
 import de.hysky.skyblocker.utils.data.ProfiledData;
@@ -42,6 +43,11 @@ public class AccessoriesHelper {
 	private static final ToIntFunction<Accessory> ACCESSORY_TIER = Accessory::tier;
 
 	public static Map<String, Accessory> ACCESSORY_DATA = new Object2ObjectOpenHashMap<>();
+	private static int currentPage = 1;
+
+	public static int getCurrentPage() {
+		return currentPage;
+	}
 
 	@Init
 	public static void init() {
@@ -54,8 +60,10 @@ public class AccessoriesHelper {
 					ScreenEvents.afterTick(screen).register(_ -> {
 						ChestMenu handler = genericContainerScreen.getMenu();
 						int page = matcher.group("page") != null ? Integer.parseInt(matcher.group("page")) : 1;
+						currentPage = page;
 
 						collectAccessories(handler.slots.subList(0, handler.getRowCount() * 9), page);
+						ContainerSolverManager.markHighlightsDirty();
 					});
 					AccessoriesHelperWidget.attachToScreen(genericContainerScreen);
 				}
@@ -157,6 +165,18 @@ public class AccessoriesHelper {
 
 	public static boolean isRecombobulated(String accessoryId) {
 		return hasAccessory(accessoryId) && COLLECTED_ACCESSORIES.computeIfAbsent(ProfileAccessoryData::createDefault).recombobulatedAccessories().contains(accessoryId);
+	}
+
+	public static Set<String> getCollectedAccessoryIdsOnOtherPages() {
+		ProfileAccessoryData data = COLLECTED_ACCESSORIES.computeIfAbsent(ProfileAccessoryData::createDefault);
+
+		Set<String> allIds = new ObjectOpenHashSet<>();
+		for (var entry : data.pages().int2ObjectEntrySet()) {
+			if (entry.getIntKey() != currentPage) {
+				allIds.addAll(entry.getValue());
+			}
+		}
+		return allIds;
 	}
 
 	public static void refreshData(Map<String, Accessory> data) {
