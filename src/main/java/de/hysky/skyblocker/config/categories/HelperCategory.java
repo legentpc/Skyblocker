@@ -90,6 +90,16 @@ public class HelperCategory {
 						.controller(ConfigUtils.createBooleanController())
 						.build())
 
+				// Duplicate Accessory Highlight
+				.option(Option.<Boolean>createBuilder()
+						.name(Component.translatable("skyblocker.config.helpers.enableDuplicateAccessoryHighlight"))
+						.description(Component.translatable("skyblocker.config.helpers.enableDuplicateAccessoryHighlight.@Tooltip"))
+						.binding(defaults.helpers.enableDuplicateAccessoryHighlight,
+								() -> config.helpers.enableDuplicateAccessoryHighlight,
+								newValue -> config.helpers.enableDuplicateAccessoryHighlight = newValue)
+						.controller(ConfigUtils.createBooleanController())
+						.build())
+
 				// Builder's Wand and Ruler Preview
 				.group(OptionGroup.createBuilder()
 						.name(Component.translatable("skyblocker.config.helpers.buildersWand"))

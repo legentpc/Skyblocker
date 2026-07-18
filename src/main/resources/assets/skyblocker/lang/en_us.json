@@ -752,6 +752,9 @@
   "skyblocker.config.helpers.enableDateCalculator": "Enable Date Calculator",
   "skyblocker.config.helpers.enableDateCalculator.@Tooltip": "Shows the date and time of events in the future, such as calendar events.",
 
+	"skyblocker.config.helpers.enableDuplicateAccessoryHighlight": "Enable Duplicate Accessory Highlight",
+	"skyblocker.config.helpers.enableDuplicateAccessoryHighlight.@Tooltip": "Highlights duplicate accessories in the Accessory Bag with a red background.",
+
   "skyblocker.config.helpers.enableNewYearCakesHelper": "Enable New Year Cakes Helper",
   "skyblocker.config.helpers.enableNewYearCakesHelper.@Tooltip": "Highlights the missing new year cakes green and the cakes you have already red.\n\nRequires you to open your cake bag at least once to work.",
 

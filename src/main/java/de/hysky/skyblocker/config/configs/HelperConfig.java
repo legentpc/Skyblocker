@@ -23,6 +23,8 @@ public class HelperConfig {
 
 	public boolean enableAccessoriesHelperWidget = true;
 
+	public boolean enableDuplicateAccessoryHighlight = true;
+
 	public BuildersWand buildersWand = new BuildersWand();
 
 	public MythologicalRitual mythologicalRitual = new MythologicalRitual();

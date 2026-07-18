@@ -57,6 +57,7 @@ public class AccessoriesContainerSolver extends SimpleContainerSolver {
 
 	@Override
 	public boolean isEnabled() {
-		return SkyblockerConfigManager.get().helpers.enableAccessoriesHelperWidget;
+		return SkyblockerConfigManager.get().helpers.enableAccessoriesHelperWidget
+				&& SkyblockerConfigManager.get().helpers.enableDuplicateAccessoryHighlight;
 	}
 }
