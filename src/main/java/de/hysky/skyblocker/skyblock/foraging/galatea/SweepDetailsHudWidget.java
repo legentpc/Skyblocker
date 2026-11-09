@@ -4,8 +4,10 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Set;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.item.Items;
 
@@ -46,10 +48,13 @@ public class SweepDetailsHudWidget extends ElementBasedWidget {
 
 	@Override
 	public boolean shouldRender() {
+		Minecraft client = Minecraft.getInstance();
+		if (client.player == null || !client.player.getMainHandItem().is(ItemTags.AXES)) return false;
+
 		// While in the hub only show in the forest and foraging camp
 		return (!Utils.getLocation().equals(Location.HUB) || Utils.getArea() == Area.Hub.FOREST || Utils.getArea() == Area.Hub.FORAGING_CAMP)
-			// While in the garden only show in unclean plots
-			&& (!Utils.getLocation().equals(Location.GARDEN) || Utils.STRING_SCOREBOARD.stream().anyMatch(s -> s.contains("Cleanup")));
+				// While in the garden only show in unclean plots
+				&& (!Utils.getLocation().equals(Location.GARDEN) || Utils.STRING_SCOREBOARD.stream().anyMatch(s -> s.contains("Cleanup")));
 	}
 
 	@Override
