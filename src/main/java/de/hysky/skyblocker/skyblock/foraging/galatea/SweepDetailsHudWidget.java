@@ -7,11 +7,11 @@ import java.util.Set;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.CommonColors;
 import net.minecraft.world.item.Items;
 
 import de.hysky.skyblocker.annotations.RegisterWidget;
+import de.hysky.skyblocker.skyblock.foraging.SweepOverlay;
 import de.hysky.skyblocker.skyblock.itemlist.ItemRepository;
 import de.hysky.skyblocker.skyblock.tabhud.util.Ico;
 import de.hysky.skyblocker.skyblock.tabhud.widget.ElementBasedWidget;
@@ -49,7 +49,7 @@ public class SweepDetailsHudWidget extends ElementBasedWidget {
 	@Override
 	public boolean shouldRender() {
 		Minecraft client = Minecraft.getInstance();
-		if (client.player == null || !client.player.getMainHandItem().is(ItemTags.AXES)) return false;
+		if (client.player == null || !SweepOverlay.isValidAxe(client.player.getMainHandItem())) return false;
 
 		// While in the hub only show in the forest and foraging camp
 		return (!Utils.getLocation().equals(Location.HUB) || Utils.getArea() == Area.Hub.FOREST || Utils.getArea() == Area.Hub.FORAGING_CAMP)
